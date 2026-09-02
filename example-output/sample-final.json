@@ -1,0 +1,97 @@
+{
+  "example_kind": "synthetic demonstration; not real scientific literature",
+  "generated_at_utc": "2026-09-02T00:00:00+00:00",
+  "search_window": {
+    "mode": "lookback",
+    "start": "2026-08-26T00:00:00+00:00",
+    "end": "2026-09-02T00:00:00+00:00",
+    "advance_auto_state": false
+  },
+  "papers": [
+    {
+      "id": "doi:10.0000/synthetic.a",
+      "title": "Synthetic high-zT telluride study",
+      "authors": ["A. Example"],
+      "source": "Synthetic Journal A",
+      "date": "2026-09-01",
+      "doi": "10.0000/synthetic.a",
+      "url": "https://example.invalid/synthetic-a",
+      "peer_review_status": "peer_reviewed",
+      "radar_score": {"te_relevance": 30, "research_quality": 26, "novelty": 18, "research_fit": 9, "recency": 10, "total": 93, "grade": "A"},
+      "summary": {
+        "purpose": "Synthetic demonstration of a high-priority thermoelectric optimization question.",
+        "innovation": "Synthetic example of a new composition-design strategy.",
+        "approach": "Fictional synthesis and transport characterization.",
+        "results": ["Synthetic result: a fictional performance metric improves relative to a fictional baseline."],
+        "mechanism": "Synthetic carrier and phonon optimization mechanism.",
+        "significance": "Shows how an A-grade paper card is represented.",
+        "limitations": ["This record is fictional and must not be interpreted as scientific evidence."]
+      },
+      "radar_note": "Synthetic A example: read first."
+    },
+    {
+      "id": "doi:10.0000/synthetic.b",
+      "title": "Synthetic carrier-optimization study",
+      "authors": ["B. Example"],
+      "source": "Synthetic Journal B",
+      "date": "2026-08-31",
+      "doi": "10.0000/synthetic.b",
+      "url": "https://example.invalid/synthetic-b",
+      "peer_review_status": "peer_reviewed",
+      "radar_score": {"te_relevance": 26, "research_quality": 24, "novelty": 15, "research_fit": 8, "recency": 10, "total": 83, "grade": "B"},
+      "summary": {
+        "purpose": "Synthetic demonstration of carrier optimization.",
+        "innovation": "Synthetic incremental transport-design idea.",
+        "approach": "Fictional doping and transport analysis.",
+        "results": ["Synthetic result: transport balance is improved in the fictional material."],
+        "mechanism": "Synthetic carrier-concentration optimization.",
+        "significance": "Shows the B-grade full-summary format.",
+        "limitations": ["This record is fictional."]
+      },
+      "radar_note": "Synthetic B example: worth tracking."
+    },
+    {
+      "id": "doi:10.0000/synthetic.c",
+      "title": "Synthetic peripheral TE device study",
+      "authors": ["C. Example"],
+      "source": "Synthetic Journal C",
+      "date": "2026-08-29",
+      "doi": "10.0000/synthetic.c",
+      "url": "https://example.invalid/synthetic-c",
+      "peer_review_status": "peer_reviewed",
+      "radar_score": {"te_relevance": 20, "research_quality": 16, "novelty": 14, "research_fit": 4, "recency": 8, "total": 62, "grade": "C"},
+      "summary": {
+        "purpose": "Synthetic peripheral thermoelectric device example.",
+        "innovation": "Synthetic device variation.",
+        "approach": "Fictional device fabrication.",
+        "results": [],
+        "mechanism": "No mechanism is asserted in this synthetic example.",
+        "significance": "Shows a browse-level record.",
+        "limitations": ["This record is fictional."]
+      },
+      "radar_note": "Synthetic C example: browse only."
+    },
+    {
+      "id": "arxiv:synthetic-001",
+      "title": "Synthetic ML screening preprint",
+      "authors": ["D. Example"],
+      "source": "arXiv",
+      "date": "2026-09-01",
+      "doi": "",
+      "url": "https://example.invalid/synthetic-preprint",
+      "peer_review_status": "preprint",
+      "notes": ["Preprint — not peer reviewed"],
+      "radar_score": {"te_relevance": 30, "research_quality": 8, "novelty": 19, "research_fit": 10, "recency": 10, "total": 77, "grade": "B"},
+      "summary": {
+        "purpose": "Synthetic demonstration of an ML-based thermoelectric screening preprint.",
+        "innovation": "Synthetic ML screening method.",
+        "approach": "Fictional composition-based screening.",
+        "results": ["Synthetic result: fictional candidates are ranked for follow-up."],
+        "mechanism": "Not applicable to this synthetic workflow example.",
+        "significance": "Shows how preprints are labeled and scored separately.",
+        "limitations": ["Preprint — not peer reviewed", "This record is fictional."]
+      },
+      "radar_note": "Synthetic preprint example: promising but unreviewed."
+    }
+  ]
+}
