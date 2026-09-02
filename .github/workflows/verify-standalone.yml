@@ -1,0 +1,92 @@
+name: Verify standalone source edition
+
+on:
+  push:
+    branches:
+      - build/standalone
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run unit tests
+        run: python3 -m unittest discover -s tests -v
+
+      - name: Compile Python
+        run: python3 -m compileall -q scripts
+
+      - name: Validate example config
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import sys
+          sys.path.insert(0, str((Path('.') / 'scripts').resolve()))
+          from te_radar.config import load_config, validate_config
+          cfg = load_config(Path('config.example.json'))
+          validate_config(cfg)
+          assert cfg['score_weights'] == {
+              'te_relevance': 30,
+              'research_quality': 30,
+              'novelty': 20,
+              'research_fit': 10,
+              'recency': 10,
+          }
+          assert cfg['email']['enabled'] is False
+          print('config validation: OK')
+          PY
+
+      - name: Verify standalone layout
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          root = Path('.')
+          forbidden_names = {
+              'paperecho-config', 'paperecho-patch', 'research-directions.toml',
+              'researchers.toml', 'paper-digest-stock-smoke.yml',
+              'paperecho-weekly.yml', 'thermoelectric-weekly.yml'
+          }
+          hits = [str(p) for p in root.rglob('*') if p.name in forbidden_names]
+          assert not hits, hits
+          skill = (root / 'SKILL.md').read_text(encoding='utf-8')
+          assert 'te-literature-radar/scripts/' not in skill
+          assert 'te-literature-radar.config.json' not in skill
+          assert 'python3 scripts/radar_cli.py' in skill
+          print('standalone layout: OK')
+          PY
+
+      - name: Scan for committed credentials
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          root = Path('.')
+          patterns = [
+              re.compile(r'gh[pousr]_[A-Za-z0-9]{20,}'),
+              re.compile(r'AKIA[0-9A-Z]{16}'),
+              re.compile(r'(?i)(api[_ -]?key|token|secret)\s*[:=]\s*["\'][A-Za-z0-9_\-]{24,}["\']'),
+          ]
+          hits = []
+          for path in root.rglob('*'):
+              if not path.is_file() or '.git' in path.parts:
+                  continue
+              try:
+                  text = path.read_text(encoding='utf-8')
+              except UnicodeDecodeError:
+                  continue
+              if any(pattern.search(text) for pattern in patterns):
+                  hits.append(str(path))
+          assert not hits, hits
+          print('credential scan: OK')
+          PY
