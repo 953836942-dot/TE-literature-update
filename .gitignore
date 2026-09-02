@@ -1,0 +1,9 @@
+config.json
+te-literature-radar.config.json
+.secrets/
+.env
+.env.*
+te-literature-radar-output/
+__pycache__/
+*.pyc
+.DS_Store
